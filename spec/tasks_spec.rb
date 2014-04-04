@@ -37,6 +37,19 @@ describe "a task repository" do
     @tasks.insert('sleep')
     @tasks.insert('eat')
     @tasks.delete(2)
-    expect(@tasks.view_tasks).to eq([{:id => 1, :task => 'sleep', :completed => false}])
+    expect(@tasks.view_tasks).to eq(
+                                   [{:id => 1, :task => 'sleep', :completed => false}
+                                   ])
+  end
+
+  it "finds a task by id" do
+    @tasks.insert('study')
+    @tasks.insert('exercise')
+    @tasks.insert('sleep')
+    @tasks.insert('eat')
+    @tasks.display_single_record(1)
+    expect(@tasks.display_single_record(1)).to eq(
+                                                 {:id => 1, :task => 'study', :completed => false}
+                                               )
   end
 end

@@ -19,4 +19,8 @@ class TaskRepos
   def delete(id)
     @tasks.where("id =#{id}").delete
   end
+
+  def display_single_record(id)
+    @tasks[:id => id]
+  end
 end
