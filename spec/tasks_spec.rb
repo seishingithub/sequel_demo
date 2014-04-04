@@ -52,4 +52,16 @@ describe "a task repository" do
                                                  {:id => 1, :task => 'study', :completed => false}
                                                )
   end
+
+  it "displays all records" do
+    @tasks.insert('study')
+    @tasks.insert('exercise')
+    @tasks.insert('sleep')
+    @tasks.insert('eat')
+    expect(@tasks.view_tasks).to eq([{:id => 1, :task => "study", :completed => false},
+                                     {:id => 2, :task => "exercise", :completed => false},
+                                     {:id => 3, :task => "sleep", :completed => false},
+                                     {:id => 4, :task => "eat", :completed => false}])
+  end
 end
+
