@@ -11,4 +11,8 @@ class TaskRepos
   def view_tasks
     @tasks.all
   end
+
+  def update(id, updates)
+    @tasks.where("id=#{id}").update(:task => updates[:task], :completed => updates[:completed])
+  end
 end

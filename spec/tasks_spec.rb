@@ -17,9 +17,19 @@ describe "a task repository" do
   end
 
   it "creates tasks in a table" do
-    @tasks.insert('study')
+    @tasks.insert('sleep')
     expect(@tasks.view_tasks).to eq([
-                                      {:id => 1, :task => 'study', :completed => false}
+                                      {:id => 1, :task => 'sleep', :completed => false}
                                     ])
+  end
+
+  it "updates the task in the table" do
+    @tasks.insert('sleep')
+    @tasks.insert('eat')
+    @tasks.update(1, {:task => 'wake up', :completed => true})
+    @tasks.update(2, {:task => 'dont eat', :completed => false})
+    expect(@tasks.view_tasks).to eq([
+                                      {:id => 1, :task => 'wake up', :completed => true},
+                                      {:id => 2, :task => 'dont eat', :completed => false}])
   end
 end
