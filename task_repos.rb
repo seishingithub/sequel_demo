@@ -15,4 +15,8 @@ class TaskRepos
   def update(id, updates)
     @tasks.where("id=#{id}").update(:task => updates[:task], :completed => updates[:completed])
   end
+
+  def delete(id)
+    @tasks.where("id =#{id}").delete
+  end
 end

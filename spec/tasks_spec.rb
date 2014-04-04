@@ -32,4 +32,11 @@ describe "a task repository" do
                                       {:id => 1, :task => 'wake up', :completed => true},
                                       {:id => 2, :task => 'dont eat', :completed => false}])
   end
+
+  it "deletes a task from the table" do
+    @tasks.insert('sleep')
+    @tasks.insert('eat')
+    @tasks.delete(2)
+    expect(@tasks.view_tasks).to eq([{:id => 1, :task => 'sleep', :completed => false}])
+  end
 end
